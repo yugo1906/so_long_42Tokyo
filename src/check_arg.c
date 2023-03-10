@@ -1,0 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_arg.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/10 09:29:42 by yughoshi          #+#    #+#             */
+/*   Updated: 2023/03/11 00:56:03 by yughoshi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../so_long.h"
+
+void	check_arg(int argc, char **argv)
+{
+	size_t	len;
+
+	if (argc != 2)
+	{
+		ft_putstr_fd("Error\nfile name required\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	len = ft_strlen(argv[1]);
+	// fileの名前の文字数が4文字以下の場合はError
+	if (len <= 4)
+	{
+		ft_putstr_fd("Error\nfile name is 4 characters or less\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	// fileの末尾が「.ber」かどうかの判定
+	if (ft_memcmp(&argv[1][len - 4], ".ber", 5))
+	{
+		ft_putstr_fd("Error\nfile isn`t the .ber extension\n", 2);
+		exit(EXIT_FAILURE);
+	}
+}

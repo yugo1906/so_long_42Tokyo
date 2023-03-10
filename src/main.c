@@ -6,12 +6,11 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 23:30:32 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/10 09:21:41 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/10 09:39:15 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../so_long.h"
-#include "../minilibx-linux/mlx.h"
+#include "../so_long.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -30,7 +29,7 @@ int	my_destroy_hook(int key_code, void *data)
 	return (1);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	int		width;
 	int		height;
@@ -40,6 +39,7 @@ int	main(void)
 	// if(argc < 2 || argc > 3)
 	// {
 	// }
+	check_arg(argc, argv);
 	mlx = mlx_init();
 	if (!mlx)
 		exit(EXIT_FAILURE);

@@ -4,7 +4,8 @@ LIBFT_DIR		=	./include_libft
 PRINTF_DIR	=	./include_printf
 GNL_DIR			=	./include_gnl
 SRC_DIR			=	./src
-SRCS 				= main.c
+SRCS 				= main.c \
+							check_arg.c
 SRCS				:= $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJS 				= ${SRCS:%.c=%.o}
 
