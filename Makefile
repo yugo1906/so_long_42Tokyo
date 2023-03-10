@@ -1,17 +1,19 @@
-NAME			=	so_long
-CFLAGS		=	-Wall -Wextra -Werror
-LIBFTDIR	=	./include_libft
-PRINTFDIR	=	./include_printf
-GNLDIR		=	./include_gnl
-SRCS = main.c
-OBJS = ${SRCS:%.c=%.o}
+NAME				=	so_long
+CFLAGS			=	-Wall -Wextra -Werror
+LIBFT_DIR		=	./include_libft
+PRINTF_DIR	=	./include_printf
+GNL_DIR			=	./include_gnl
+SRC_DIR			=	./src
+SRCS 				= main.c
+SRCS				:= $(addprefix $(SRC_DIR)/, $(SRCS))
+OBJS 				= ${SRCS:%.c=%.o}
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	make -C $(LIBFTDIR)
-	make -C $(PRINTFDIR)
-	make -C $(GNLDIR)
+	make -C $(LIBFT_DIR)
+	make -C $(PRINTF_DIR)
+	make -C $(GNL_DIR)
 	make -C ./minilibx-linux
 	cc $(CFLAGS)  \
 	-framework OpenGL \
@@ -20,18 +22,18 @@ $(NAME) : $(OBJS)
 	/usr/X11R6/lib/libXext.dylib \
 	-L./minilibx-linux \
 	-lmlx_Darwin \
-	$^ $(LIBFTDIR)/libft.a $(PRINTFDIR)/libftprintf.a $(GNLDIR)/libgnl.a -o $@
+	$^ $(LIBFT_DIR)/libft.a $(PRINTF_DIR)/libftprintf.a $(GNL_DIR)/libgnl.a -o $@
 
 clean :
-		make clean -C $(LIBFTDIR)
-		make clean -C $(PRINTFDIR)
-		make clean -C $(GNLDIR)
+		make clean -C $(LIBFT_DIR)
+		make clean -C $(PRINTF_DIR)
+		make clean -C $(GNL_DIR)
 	rm -f $(OBJS)
 
 fclean : clean
-	make fclean -C $(LIBFTDIR)
-	make fclean -C $(PRINTFDIR)
-	make fclean -C $(GNLDIR)
+	make fclean -C $(LIBFT_DIR)
+	make fclean -C $(PRINTF_DIR)
+	make fclean -C $(GNL_DIR)
 	rm -f $(NAME)
 
 re: fclean $(NAME)
