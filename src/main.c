@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*minilibx動作のテスト
 int	my_key_hook(int key_code, void *data)
 {
 	printf("key_code=%d\n", key_code);
@@ -28,18 +29,15 @@ int	my_destroy_hook(int key_code, void *data)
 	exit(EXIT_SUCCESS);
 	return (1);
 }
+*/
 
 int	main(int argc, char **argv)
 {
+	/* minilibx動作テスト
 	int		width;
 	int		height;
 	void	*mlx;
 	void	*win;
-
-	// if(argc < 2 || argc > 3)
-	// {
-	// }
-	check_arg(argc, argv);
 	mlx = mlx_init();
 	if (!mlx)
 		exit(EXIT_FAILURE);
@@ -57,6 +55,7 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	free(mlx);
+*/
 	return (0);
 }
 
