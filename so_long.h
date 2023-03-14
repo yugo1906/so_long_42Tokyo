@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:45:15 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/10 09:37:59 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/15 08:39:50 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-void check_arg(int argc, char **argv);
+typedef struct s_game_data
+{
+	void	*mlx;
+	void	*win;
+	size_t	col;
+	size_t	row;
+}			t_info;
+
+void		check_arg(int argc, char **argv);
 #endif
