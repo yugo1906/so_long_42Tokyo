@@ -1,11 +1,13 @@
 NAME				=	so_long
-CFLAGS			=	-Wall -Wextra -Werror
+# CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-g -fsanitize=address
 LIBFT_DIR		=	./include_libft
 PRINTF_DIR	=	./include_printf
 GNL_DIR			=	./include_gnl
 SRC_DIR			=	./src
 SRCS 				= main.c \
-							check_arg.c
+							check_arg.c \
+							get_loaded_map.c
 SRCS				:= $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJS 				= ${SRCS:%.c=%.o}
 

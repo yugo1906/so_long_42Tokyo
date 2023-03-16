@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:45:15 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/15 08:39:50 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/15 09:28:11 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,12 @@
 # include "./include_libft/libft.h"
 # include "./include_printf/ft_printf.h"
 # include "./minilibx-linux/mlx.h"
+# include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
+
+# define FD_2 2
 
 typedef struct s_game_data
 {
@@ -28,4 +32,5 @@ typedef struct s_game_data
 }			t_info;
 
 void		check_arg(int argc, char **argv);
+char		**get_loaded_map(t_info *info, char *file_name);
 #endif

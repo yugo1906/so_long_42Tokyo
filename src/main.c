@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 23:30:32 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/15 08:47:08 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/16 09:39:12 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ int	main(int argc, char **argv)
 	t_info	info;
 
 	check_arg(argc, argv);
-	loaded_map = get_read_map(&info, argv[1]);
-	check_map(&info, loaded_map);
+	loaded_map = get_loaded_map(&info, argv[1]);
 
+	// check_map(&info, loaded_map);
 	/* minilibx動作テスト
-	int		width;
-	int		height;
-	void	*mlx;
-	void	*win;
+	// int		width;
+	// int		height;
+	// void	*mlx;
+	// void	*win;
 	mlx = mlx_init();
 	if (!mlx)
 		exit(EXIT_FAILURE);

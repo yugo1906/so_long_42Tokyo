@@ -6,13 +6,13 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 07:10:41 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/01/29 07:30:42 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/15 09:47:40 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_gnl_strchr(const char *s, int c)
 {
 	size_t	i;
 
@@ -43,13 +43,13 @@ char	*get_buf(int fd, char *st_buf)
 	if (tmp == NULL)
 		return (NULL);
 	read_bytes = 1;
-	while (ft_strchr(st_buf, '\n') == NULL)
+	while (ft_gnl_strchr(st_buf, '\n') == NULL)
 	{
 		read_bytes = read(fd, tmp, BUFFER_SIZE);
 		if (read_bytes <= 0)
 			break ;
 		tmp[read_bytes] = '\0';
-		st_buf = ft_strjoin(st_buf, tmp);
+		st_buf = ft_gnl_strjoin(st_buf, tmp);
 		if (st_buf == NULL)
 		{
 			free(tmp);
@@ -70,7 +70,7 @@ char	*get_one_line(char *st_buf)
 	i = 0;
 	if (st_buf[i] == '\0')
 		return (NULL);
-	res_one_line = malloc(sizeof(char) * (ft_strlen(st_buf) + 1));
+	res_one_line = malloc(sizeof(char) * (ft_gnl_strlen(st_buf) + 1));
 	if (res_one_line == NULL)
 		return (NULL);
 	while (st_buf[i] != '\n' && st_buf[i] != '\0')
@@ -98,7 +98,7 @@ char	*get_next_start_point(char *st_buf)
 		free(st_buf);
 		return (NULL);
 	}
-	res_next_start_point = malloc(sizeof(char) * ft_strlen(st_buf) + 1);
+	res_next_start_point = malloc(sizeof(char) * ft_gnl_strlen(st_buf) + 1);
 	if (res_next_start_point == NULL)
 		return (NULL);
 	i++;
