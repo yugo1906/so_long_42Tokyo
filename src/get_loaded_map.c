@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 08:51:00 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/16 09:37:46 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/16 09:40:14 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,5 @@ char	**get_loaded_map(t_info *info, char *file_name)
 		i++;
 	}
 	close(fd);
-	// マップ読み込み内容のテスト
-	i = 0;
-	while (i < num_of_lines)
-	{
-		ft_putstr_fd(loaded_map[i], 1);
-		i++;
-	}
 	return (loaded_map);
 }
