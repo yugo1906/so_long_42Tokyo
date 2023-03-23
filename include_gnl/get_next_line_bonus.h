@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 08:43:18 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/01/28 16:01:36 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/24 08:34:03 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 char	*get_next_line(int fd);
 
-size_t	ft_strlen(const char *s);
+size_t	ft_strlen_gnlb(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strjoin(char *s1, char const *s2);

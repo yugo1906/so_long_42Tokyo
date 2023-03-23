@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 08:40:20 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/01/29 07:33:20 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/24 08:33:52 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*get_one_line(char *st_buf)
 	i = 0;
 	if (st_buf[i] == '\0')
 		return (NULL);
-	res_one_line = malloc(sizeof(char) * (ft_strlen(st_buf) + 1));
+	res_one_line = malloc(sizeof(char) * (ft_strlen_gnlb(st_buf) + 1));
 	if (res_one_line == NULL)
 		return (NULL);
 	while (st_buf[i] != '\n' && st_buf[i] != '\0')
@@ -98,7 +98,7 @@ char	*get_next_start_point(char *st_buf)
 		free(st_buf);
 		return (NULL);
 	}
-	res_next_start_point = malloc(sizeof(char) * ft_strlen(st_buf) + 1);
+	res_next_start_point = malloc(sizeof(char) * ft_strlen_gnlb(st_buf) + 1);
 	if (res_next_start_point == NULL)
 		return (NULL);
 	i++;

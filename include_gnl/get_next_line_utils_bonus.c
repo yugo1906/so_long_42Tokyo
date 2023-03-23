@@ -6,13 +6,13 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 08:40:43 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/01/29 07:57:16 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/24 08:33:14 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen_gnlb(const char *s)
 {
 	size_t	length;
 
@@ -51,9 +51,9 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 
 	if (dstsize == 0)
-		return (ft_strlen(src));
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
+		return (ft_strlen_gnlb(src));
+	dst_len = ft_strlen_gnlb(dst);
+	src_len = ft_strlen_gnlb(src);
 	if (dstsize <= dst_len)
 		return (src_len + dstsize);
 	i = 0;
@@ -78,7 +78,7 @@ char	*ft_strdup(const char *s1)
 	char	*ptr;
 	size_t	s1_len;
 
-	s1_len = ft_strlen(s1);
+	s1_len = ft_strlen_gnlb(s1);
 	ptr = (char *)malloc(sizeof(char) * (s1_len + 1));
 	if (ptr == NULL)
 	{
@@ -100,8 +100,8 @@ char	*ft_strjoin(char *s1, char const *s2)
 		return (ft_strdup(s2));
 	if (s2 == NULL)
 		return (ft_strdup(s1));
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
+	len_s1 = ft_strlen_gnlb(s1);
+	len_s2 = ft_strlen_gnlb(s2);
 	res = (char *)malloc(len_s1 + len_s2 + 1);
 	if (res == NULL)
 		return (NULL);
