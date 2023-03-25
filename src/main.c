@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 23:30:32 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/16 09:39:12 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/25 20:14:34 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,16 @@ int	main(int argc, char **argv)
 
 	check_arg(argc, argv);
 	loaded_map = get_loaded_map(&info, argv[1]);
-
-	// check_map(&info, loaded_map);
+	validate_map(&info, loaded_map);
+	// マップ内容確認コード
+	// int		i = 0;
+	// printf("info->row = %d\n", info.row);
+	// printf("info->col = %d\n", info.col);
+	// while (i <= info.row)
+	// {
+	// 	ft_putstr_fd(loaded_map[i], 1);
+	// 	i++;
+	// }
 	/* minilibx動作テスト
 	// int		width;
 	// int		height;

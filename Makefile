@@ -7,7 +7,9 @@ GNL_DIR			=	./include_gnl
 SRC_DIR			=	./src
 SRCS 				= main.c \
 							check_arg.c \
-							get_loaded_map.c
+							get_loaded_map.c \
+							validate_map.c \
+							free_map.c
 SRCS				:= $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJS 				= ${SRCS:%.c=%.o}
 
