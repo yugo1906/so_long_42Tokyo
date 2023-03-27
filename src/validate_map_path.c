@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 08:59:31 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/27 09:22:03 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/27 09:40:33 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,5 @@ void	validate_path(t_info *info, char **map)
 	p_col_point = get_p_point(info, cp_map, COL);
 	set_mark(cp_map, p_row_point, p_col_point);
 	validate_mark(info, cp_map, map, 0);
+	free_copy_map(cp_map, info->row);
 }
