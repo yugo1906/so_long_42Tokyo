@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 07:46:17 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/25 20:07:35 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/26 12:52:31 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static void	validate_element(t_info *info, char **map, size_t i, size_t j)
 	player_count = 0;
 	exit_count = 0;
 	item_count = 0;
-	while (i <= info->row)
+	while (++i <= info->row)
 	{
 		j = 0;
-		while (j < info->col)
+		while (j <= info->col)
 		{
 			if (!ft_strchr("01CEP", map[i][j]))
 				free_map_and_exit(info, map, "Error\nForbidden elements\n");
@@ -36,7 +36,6 @@ static void	validate_element(t_info *info, char **map, size_t i, size_t j)
 				item_count++;
 			j++;
 		}
-		i++;
 	}
 	if (player_count != 1 || exit_count != 1 || item_count == 0)
 		free_map_and_exit(info, map, "Error\nInvalid map\n");
@@ -95,7 +94,7 @@ void	validate_map(t_info *info, char **map)
 		exit(EXIT_FAILURE);
 	}
 	validate_rectangle(info, map);
-	validate_element(info, map, 0, 0);
+	validate_element(info, map, -1, 0);
 	validate_enclosed_wall(info, map);
-	// validate_path(info, map);
+	validate_path(info, map);
 }
