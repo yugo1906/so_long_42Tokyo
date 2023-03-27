@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map_utils.c                               :+:      :+:    :+:   */
+/*   validate_map_path.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 08:59:31 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/26 18:41:01 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/27 09:22:03 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ static void	validate_mark(t_info *info, char **cp_map, char **map, size_t i)
 				is_all_items_collect = false;
 			else if (cp_map[i][j] == 'M' && map[i][j] == 'E')
 				is_can_goal = true;
-			printf("cp_map=%c\n", cp_map[i][j]);
-			printf("map=%c\n", map[i][j]);
 			j++;
 		}
 		i++;
@@ -109,18 +107,10 @@ void	validate_path(t_info *info, char **map)
 	char	**cp_map;
 	size_t	p_row_point;
 	size_t	p_col_point;
-	int		i;
 
 	cp_map = copy_map(info, map);
 	p_row_point = get_p_point(info, cp_map, ROW);
 	p_col_point = get_p_point(info, cp_map, COL);
 	set_mark(cp_map, p_row_point, p_col_point);
-	i = 0;
-	while (i <= info->row)
-	{
-		ft_putstr_fd(cp_map[i], 1);
-		printf("\n");
-		i++;
-	}
 	validate_mark(info, cp_map, map, 0);
 }
