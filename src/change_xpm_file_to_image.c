@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 09:05:37 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/29 23:12:47 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/29 23:24:35 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	validate_image(t_info *info, char **loaded_map)
 	size_t	i;
 
 	i = 0;
-	while (i <= COUNT_TYPE)
+	while (i < count_type)
 	{
 		if (info->image[i] == NULL)
 			free_map_and_exit(info, loaded_map, "Error\nMlx NULL");

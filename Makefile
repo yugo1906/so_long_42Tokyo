@@ -17,7 +17,7 @@ OBJS 				= ${SRCS:%.c=%.o}
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJS) so_long.h
 	make -C $(LIBFT_DIR)
 	make -C $(PRINTF_DIR)
 	make -C $(GNL_DIR)
@@ -29,7 +29,7 @@ $(NAME) : $(OBJS)
 	/usr/X11R6/lib/libXext.dylib \
 	-L./minilibx-linux \
 	-lmlx_Darwin \
-	$^ $(LIBFT_DIR)/libft.a $(PRINTF_DIR)/libftprintf.a $(GNL_DIR)/libgnl.a -o $@
+	$(OBJS) $(LIBFT_DIR)/libft.a $(PRINTF_DIR)/libftprintf.a $(GNL_DIR)/libgnl.a -o $@
 
 clean :
 		make clean -C $(LIBFT_DIR)
