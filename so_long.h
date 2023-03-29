@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:45:15 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/29 22:48:47 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/29 23:12:18 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define FD_2 2
 # define ROW 10
 # define COL 20
-# define COUNT_TYPE path
+# define COUNT_TYPE so_long_path
 
 typedef struct s_game_data
 {
@@ -38,11 +38,11 @@ typedef struct s_game_data
 
 typedef enum e_type
 {
-	player,
-	wall,
-	exit,
-	item,
-	path,
+	so_long_player,
+	so_long_wall,
+	so_long_exit,
+	so_long_item,
+	so_long_path,
 }			t_type;
 
 void		check_arg(int argc, char **argv);
@@ -54,4 +54,5 @@ void		free_two_map_exit(t_info *info, char **map, char **cp_map,
 				char *ex_m);
 void		free_copy_map(char **cp_map, size_t free_size);
 void		validate_path(t_info *info, char **map);
+void		change_xpm_file_to_image(t_info *info, char **loaded_map);
 #endif

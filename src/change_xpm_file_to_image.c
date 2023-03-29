@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 09:05:37 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/29 22:50:46 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/29 23:12:47 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static void	create_image_ptr(t_info *info, t_type type, char *xpm_file)
 
 static void	create_image(t_info *info)
 {
-	create_image_ptr(info, player, "img/player/ruffy.xpm");
-	create_image_ptr(info, wall, "img/wall/hoge");
-	create_image_ptr(info, exit, "img/exit/hoge");
-	create_image_ptr(info, item, "img/item/hoge");
-	create_image_ptr(info, path, "img/path/hoge");
+	create_image_ptr(info, so_long_player, "img/player/ruffy.xpm");
+	create_image_ptr(info, so_long_wall, "img/wall/hoge");
+	create_image_ptr(info, so_long_exit, "img/exit/hoge");
+	create_image_ptr(info, so_long_item, "img/item/hoge");
+	create_image_ptr(info, so_long_path, "img/path/hoge");
 }
 
 static void	validate_image(t_info *info, char **loaded_map)

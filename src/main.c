@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 	info.mlx = mlx_init();
 	info.win = mlx_new_window(info.mlx, 1920, 1080, "so_long");
 	validate_mlx_error(&info, loaded_map);
-	change_xpm_file_to_image(&info);
+	change_xpm_file_to_image(&info, loaded_map);
 	return (0);
 }
 
