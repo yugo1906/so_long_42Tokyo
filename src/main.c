@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 23:30:32 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/27 09:15:05 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/29 09:01:05 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int	my_destroy_hook(int key_code, void *data)
 	return (1);
 }
 */
+static void	validate_mlx_error(t_info *info, char **loaded_map)
+{
+	if (info->mlx == NULL || info->win == NULL)
+		free_map_and_exit(info, loaded_map, "Error\nMlx NULL");
+}
 
 int	main(int argc, char **argv)
 {
@@ -37,6 +42,9 @@ int	main(int argc, char **argv)
 	check_arg(argc, argv);
 	loaded_map = get_loaded_map(&info, argv[1]);
 	validate_map(&info, loaded_map);
+	info.mlx = mlx_init();
+	info.win = mlx_new_window(info.mlx, 1920, 1080, "so_long");
+	validate_mlx_error(&info, loaded_map);
 	return (0);
 }
 
