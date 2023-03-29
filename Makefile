@@ -10,7 +10,8 @@ SRCS 				= main.c \
 							get_loaded_map.c \
 							validate_map.c \
 							validate_map_path.c \
-							free_map.c
+							free_map.c \
+							change_xpm_file_to_image.c
 SRCS				:= $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJS 				= ${SRCS:%.c=%.o}
 

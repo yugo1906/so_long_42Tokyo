@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 23:30:32 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/29 09:01:05 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/29 23:03:47 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int argc, char **argv)
 	info.mlx = mlx_init();
 	info.win = mlx_new_window(info.mlx, 1920, 1080, "so_long");
 	validate_mlx_error(&info, loaded_map);
+	change_xpm_file_to_image(&info);
 	return (0);
 }
 
