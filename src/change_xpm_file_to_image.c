@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 09:05:37 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/30 09:25:06 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/31 08:55:22 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	create_image_ptr(t_info *info, t_type type, char *xpm_file)
 
 static void	create_image(t_info *info)
 {
-	create_image_ptr(info, so_long_player, "./img/player/ruffy.xpm");
+	create_image_ptr(info, so_long_player, "./img/player/player.xpm");
 	create_image_ptr(info, so_long_wall, "./img/wall/wall.xpm");
 	create_image_ptr(info, so_long_exit, "./img/exit/goal.xpm");
 	create_image_ptr(info, so_long_item, "./img/item/item.xpm");
