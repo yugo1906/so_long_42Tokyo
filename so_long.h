@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:45:15 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/30 20:24:47 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/31 08:47:08 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ void		free_two_map_exit(t_info *info, char **map, char **cp_map,
 void		free_copy_map(char **cp_map, size_t free_size);
 void		validate_path(t_info *info, char **map);
 void		change_xpm_file_to_image(t_info *info, char **loaded_map);
+void		display_map(t_info *info, char **loaded_map);
 #endif

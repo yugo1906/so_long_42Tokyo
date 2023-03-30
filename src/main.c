@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 23:30:32 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/29 23:03:47 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/31 08:50:44 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,15 @@ int	main(int argc, char **argv)
 	loaded_map = get_loaded_map(&info, argv[1]);
 	validate_map(&info, loaded_map);
 	info.mlx = mlx_init();
-	info.win = mlx_new_window(info.mlx, 1920, 1080, "so_long");
+	info.win = mlx_new_window(info.mlx, info.col * 50 + 50, info.row * 50 + 50,
+			"so_long");
 	validate_mlx_error(&info, loaded_map);
 	change_xpm_file_to_image(&info, loaded_map);
+	display_map(&info, loaded_map);
+	mlx_loop(info.mlx);
+	// close_mlx(&info, loaded_map);
 	return (0);
 }
-
 // マップ内容確認コード
 // int		i = 0;
 // printf("info->row = %d\n", info.row);
