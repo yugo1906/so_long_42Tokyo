@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 07:46:17 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/26 12:52:31 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:26:52 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ static void	validate_element(t_info *info, char **map, size_t i, size_t j)
 		{
 			if (!ft_strchr("01CEP", map[i][j]))
 				free_map_and_exit(info, map, "Error\nForbidden elements\n");
-			if (map[i][j] == 'P')
+			if (map[i][j] == PLAYER)
 				player_count++;
-			else if (map[i][j] == 'E')
+			else if (map[i][j] == EXIT)
 				exit_count++;
-			else if (map[i][j] == 'C')
+			else if (map[i][j] == ITEM)
 				item_count++;
 			j++;
 		}
@@ -68,14 +68,14 @@ static void	validate_enclosed_wall(t_info *info, char **map)
 	i = 0;
 	while (i <= info->col)
 	{
-		if (map[0][i] != '1' || map[info->row][i] != '1')
+		if (map[0][i] != WALL || map[info->row][i] != WALL)
 			free_map_and_exit(info, map, "Error\nNot enclosed by walls\n");
 		i++;
 	}
 	i = 0;
 	while (i <= info->row)
 	{
-		if (map[i][info->col] != '1' || map[i][0] != '1')
+		if (map[i][info->col] != WALL || map[i][0] != WALL)
 			free_map_and_exit(info, map, "Error\nNot enclosed by walls\n");
 		i++;
 	}
@@ -88,7 +88,7 @@ void	validate_map(t_info *info, char **map)
 		ft_putstr_fd("Error\nInvalid map\n", FD_2);
 		exit(EXIT_FAILURE);
 	}
-	if (map[0][0] != '1')
+	if (map[0][0] != WALL)
 	{
 		ft_putstr_fd("Error\nThe first character in the file is not 1\n", FD_2);
 		exit(EXIT_FAILURE);

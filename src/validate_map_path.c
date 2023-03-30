@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 08:59:31 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/27 09:40:33 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:27:34 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ static size_t	get_p_point(t_info *info, char **cp_map, size_t row_or_col)
 		col_point = 1;
 		while (col_point <= info->col)
 		{
-			if (cp_map[row_point][col_point] == 'P' && row_or_col == ROW)
+			if (cp_map[row_point][col_point] == PLAYER && row_or_col == e_row)
 				return (row_point);
-			if (cp_map[row_point][col_point] == 'P' && row_or_col == COL)
+			if (cp_map[row_point][col_point] == PLAYER && row_or_col == e_col)
 				return (col_point);
 			col_point++;
 		}
@@ -65,7 +65,7 @@ static size_t	get_p_point(t_info *info, char **cp_map, size_t row_or_col)
 
 static void	set_mark(char **cp_map, size_t row, size_t col)
 {
-	if (cp_map[row][col] != '1' && cp_map[row][col] != 'M')
+	if (cp_map[row][col] != WALL && cp_map[row][col] != 'M')
 	{
 		cp_map[row][col] = 'M';
 		set_mark(cp_map, row, col + 1);
@@ -88,9 +88,9 @@ static void	validate_mark(t_info *info, char **cp_map, char **map, size_t i)
 		j = 0;
 		while (j <= info->col)
 		{
-			if (cp_map[i][j] == 'C' && map[i][j] == 'C')
+			if (cp_map[i][j] == ITEM && map[i][j] == ITEM)
 				is_all_items_collect = false;
-			else if (cp_map[i][j] == 'M' && map[i][j] == 'E')
+			else if (cp_map[i][j] == 'M' && map[i][j] == EXIT)
 				is_can_goal = true;
 			j++;
 		}
@@ -109,8 +109,8 @@ void	validate_path(t_info *info, char **map)
 	size_t	p_col_point;
 
 	cp_map = copy_map(info, map);
-	p_row_point = get_p_point(info, cp_map, ROW);
-	p_col_point = get_p_point(info, cp_map, COL);
+	p_row_point = get_p_point(info, cp_map, e_row);
+	p_col_point = get_p_point(info, cp_map, e_col);
 	set_mark(cp_map, p_row_point, p_col_point);
 	validate_mark(info, cp_map, map, 0);
 	free_copy_map(cp_map, info->row);

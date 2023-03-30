@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:45:15 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/29 23:33:49 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:24:47 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,17 @@
 # include <unistd.h>
 
 # define FD_2 2
-# define ROW 10
-# define COL 20
+# define PATH '0'
+# define WALL '1'
+# define PLAYER 'P'
+# define EXIT 'E'
+# define ITEM 'C'
+
+typedef enum e_flag_row_or_col
+{
+	e_row,
+	e_col,
+}			t_flag_row_or_col;
 
 typedef enum e_type
 {
