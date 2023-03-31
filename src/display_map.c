@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 20:14:17 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/31 08:52:32 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/31 09:11:03 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 static void	image_to_window(t_info *info, char str, int x, int y)
 {
 	if (str == WALL)
-		mlx_put_image_to_window(info->mlx, info->win, info->image[so_long_wall],
+		mlx_put_image_to_window(info->mlx, info->win, info->image[e_wall],
 			x * 50, y * 50);
 	else if (str == PATH)
-		mlx_put_image_to_window(info->mlx, info->win, info->image[so_long_path],
+		mlx_put_image_to_window(info->mlx, info->win, info->image[e_path],
 			x * 50, y * 50);
 	else if (str == PLAYER)
 		mlx_put_image_to_window(info->mlx, info->win,
-			info->image[so_long_player], x * 50, y * 50);
+			info->image[e_player], x * 50, y * 50);
 	else if (str == ITEM)
-		mlx_put_image_to_window(info->mlx, info->win, info->image[so_long_item],
+		mlx_put_image_to_window(info->mlx, info->win, info->image[e_item],
 			x * 50, y * 50);
 	else if (str == EXIT)
-		mlx_put_image_to_window(info->mlx, info->win, info->image[so_long_exit],
+		mlx_put_image_to_window(info->mlx, info->win, info->image[e_exit],
 			x * 50, y * 50);
 }
 

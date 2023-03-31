@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:45:15 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/31 08:47:08 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/31 09:09:50 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ typedef enum e_flag_row_or_col
 
 typedef enum e_type
 {
-	so_long_player,
-	so_long_wall,
-	so_long_exit,
-	so_long_item,
-	so_long_path,
+	e_player,
+	e_wall,
+	e_exit,
+	e_item,
+	e_path,
 	count_type,
 }			t_type;
 
