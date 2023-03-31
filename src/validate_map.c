@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 07:46:17 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/30 20:26:52 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/31 09:19:30 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	validate_element(t_info *info, char **map, size_t i, size_t j)
 
 	player_count = 0;
 	exit_count = 0;
-	item_count = 0;
+	info->total_items = 0;
 	while (++i <= info->row)
 	{
 		j = 0;
@@ -33,11 +33,11 @@ static void	validate_element(t_info *info, char **map, size_t i, size_t j)
 			else if (map[i][j] == EXIT)
 				exit_count++;
 			else if (map[i][j] == ITEM)
-				item_count++;
+				info->total_items++;
 			j++;
 		}
 	}
-	if (player_count != 1 || exit_count != 1 || item_count == 0)
+	if (player_count != 1 || exit_count != 1 || info->total_items == 0)
 		free_map_and_exit(info, map, "Error\nInvalid map\n");
 }
 
