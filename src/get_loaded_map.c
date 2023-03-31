@@ -6,26 +6,26 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 08:51:00 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/27 09:14:15 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/03/31 09:13:16 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void	ex_handling_reason_file_error(char *file_name)
+static void	ex_handling_file_error(char *file_name)
 {
 	ft_putstr_fd("Error\n", FD_2);
 	perror(file_name);
 	exit(EXIT_FAILURE);
 }
 
-static void	ex_handling_reason_malloc_error(void)
+static void	ex_handling_malloc_error(void)
 {
 	ft_putstr_fd("Error\nmalloc failed\n", FD_2);
 	exit(EXIT_FAILURE);
 }
 
-static void	ex_handling_reason_gnl_error(char **loaded_map)
+static void	ex_handling_gnl_error(char **loaded_map)
 {
 	size_t	i;
 
@@ -47,7 +47,7 @@ static size_t	get_num_of_lines(t_info *info, char *file_name)
 	num_of_lines = 0;
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		ex_handling_reason_file_error(file_name);
+		ex_handling_file_error(file_name);
 	while (1)
 	{
 		tmp = get_next_line(fd);
@@ -71,16 +71,16 @@ char	**get_loaded_map(t_info *info, char *file_name)
 	num_of_lines = get_num_of_lines(info, file_name);
 	loaded_map = malloc(sizeof(char *) * (num_of_lines + 1));
 	if (loaded_map == NULL)
-		ex_handling_reason_malloc_error();
+		ex_handling_malloc_error();
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		ex_handling_reason_file_error(file_name);
+		ex_handling_file_error(file_name);
 	i = 0;
 	while (i < num_of_lines)
 	{
 		loaded_map[i] = get_next_line(fd);
 		if (loaded_map[i] == NULL)
-			ex_handling_reason_gnl_error(loaded_map);
+			ex_handling_gnl_error(loaded_map);
 		i++;
 	}
 	close(fd);
