@@ -6,13 +6,13 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 08:59:31 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/30 20:27:34 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/05 08:09:41 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static char	**copy_map(t_info *info, char **map)
+static char	**copy_map(t_info *info)
 {
 	char	**cp_map;
 	size_t	i;
@@ -20,7 +20,7 @@ static char	**copy_map(t_info *info, char **map)
 
 	cp_map = malloc(sizeof(char *) * (info->row + 1));
 	if (cp_map == NULL)
-		free_map_and_exit(info, map, "Error\nmalloc failed\n");
+		free_map_and_exit(info, info->map, "Error\nmalloc failed\n");
 	i = 0;
 	while (i <= info->row)
 	{
@@ -28,12 +28,12 @@ static char	**copy_map(t_info *info, char **map)
 		if (cp_map[i] == NULL)
 		{
 			free_copy_map(cp_map, i);
-			free_map_and_exit(info, map, "Error\nmalloc failed\n");
+			free_map_and_exit(info, info->map, "Error\nmalloc failed\n");
 		}
 		j = 0;
 		while (j <= info->col)
 		{
-			cp_map[i][j] = map[i][j];
+			cp_map[i][j] = info->map[i][j];
 			j++;
 		}
 		i++;
@@ -75,7 +75,7 @@ static void	set_mark(char **cp_map, size_t row, size_t col)
 	}
 }
 
-static void	validate_mark(t_info *info, char **cp_map, char **map, size_t i)
+static void	validate_mark(t_info *info, char **cp_map, size_t i)
 {
 	size_t	j;
 	size_t	is_all_items_collect;
@@ -88,9 +88,9 @@ static void	validate_mark(t_info *info, char **cp_map, char **map, size_t i)
 		j = 0;
 		while (j <= info->col)
 		{
-			if (cp_map[i][j] == ITEM && map[i][j] == ITEM)
+			if (cp_map[i][j] == ITEM && info->map[i][j] == ITEM)
 				is_all_items_collect = false;
-			else if (cp_map[i][j] == 'M' && map[i][j] == EXIT)
+			else if (cp_map[i][j] == 'M' && info->map[i][j] == EXIT)
 				is_can_goal = true;
 			j++;
 		}
@@ -99,19 +99,19 @@ static void	validate_mark(t_info *info, char **cp_map, char **map, size_t i)
 	if (is_all_items_collect && is_can_goal)
 		return ;
 	free_copy_map(cp_map, info->row);
-	free_map_and_exit(info, map, "Error\nInvalid map\n");
+	free_map_and_exit(info, info->map, "Error\nInvalid map\n");
 }
 
-void	validate_path(t_info *info, char **map)
+void	validate_path(t_info *info)
 {
 	char	**cp_map;
 	size_t	p_row_point;
 	size_t	p_col_point;
 
-	cp_map = copy_map(info, map);
+	cp_map = copy_map(info);
 	p_row_point = get_p_point(info, cp_map, e_row);
 	p_col_point = get_p_point(info, cp_map, e_col);
 	set_mark(cp_map, p_row_point, p_col_point);
-	validate_mark(info, cp_map, map, 0);
+	validate_mark(info, cp_map, 0);
 	free_copy_map(cp_map, info->row);
 }

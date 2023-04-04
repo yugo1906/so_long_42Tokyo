@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 20:14:17 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/31 09:11:03 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/05 08:13:24 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	image_to_window(t_info *info, char str, int x, int y)
 			x * 50, y * 50);
 }
 
-void	display_map(t_info *info, char **loaded_map)
+void	display_map(t_info *info)
 {
 	size_t	i;
 	size_t	j;
@@ -42,7 +42,7 @@ void	display_map(t_info *info, char **loaded_map)
 		j = 0;
 		while (j <= info->col)
 		{
-			image_to_window(info, loaded_map[i][j], j, i);
+			image_to_window(info, info->map[i][j], j, i);
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 09:05:37 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/31 09:10:08 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/05 08:12:27 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	create_image(t_info *info)
 	create_image_ptr(info, e_path, "./img/path/blue_path.xpm");
 }
 
-static void	validate_image(t_info *info, char **loaded_map)
+static void	validate_image(t_info *info)
 {
 	size_t	i;
 
@@ -39,13 +39,13 @@ static void	validate_image(t_info *info, char **loaded_map)
 	while (i < count_type)
 	{
 		if (info->image[i] == NULL)
-			free_map_and_exit(info, loaded_map, "Error\nMlx NULL");
+			free_map_and_exit(info, info->map, "Error\nMlx NULL");
 		i++;
 	}
 }
 
-void	change_xpm_file_to_image(t_info *info, char **loaded_map)
+void	change_xpm_file_to_image(t_info *info)
 {
 	create_image(info);
-	validate_image(info, loaded_map);
+	validate_image(info);
 }

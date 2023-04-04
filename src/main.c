@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 23:30:32 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/31 08:50:44 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/05 08:20:50 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,26 @@ int	my_destroy_hook(int key_code, void *data)
 	return (1);
 }
 */
-static void	validate_mlx_error(t_info *info, char **loaded_map)
+static void	validate_mlx_error(t_info *info)
 {
 	if (info->mlx == NULL || info->win == NULL)
-		free_map_and_exit(info, loaded_map, "Error\nMlx NULL");
+		free_map_and_exit(info, info->map, "Error\nMlx NULL");
 }
 
 int	main(int argc, char **argv)
 {
-	char	**loaded_map;
 	t_info	info;
 
 	check_arg(argc, argv);
-	loaded_map = get_loaded_map(&info, argv[1]);
-	validate_map(&info, loaded_map);
+	info.map = get_loaded_map(&info, argv[1]);
+	validate_map(&info);
 	info.mlx = mlx_init();
 	info.win = mlx_new_window(info.mlx, info.col * 50 + 50, info.row * 50 + 50,
 			"so_long");
-	validate_mlx_error(&info, loaded_map);
-	change_xpm_file_to_image(&info, loaded_map);
-	display_map(&info, loaded_map);
+	validate_mlx_error(&info);
+	change_xpm_file_to_image(&info);
+	display_map(&info);
+	// setting_hook(&info);
 	mlx_loop(info.mlx);
 	// close_mlx(&info, loaded_map);
 	return (0);
