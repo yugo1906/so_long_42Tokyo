@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 07:46:17 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/04/05 08:31:43 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/05 09:08:40 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ static void	check_element(t_info *info, size_t i, size_t j)
 		free_map_and_exit(info, info->map, "Error\nForbidden elements\n");
 	if (info->map[i][j] == PLAYER)
 	{
-		info->player_num++;
+		info->player_sum++;
 		info->player[e_row] = i;
 		info->player[e_col] = j;
 	}
 	else if (info->map[i][j] == EXIT)
-		info->exit_num++;
+		info->exit_sum++;
 	else if (info->map[i][j] == ITEM)
-		info->item_num++;
+		info->item_sum++;
 }
 
 static void	validate_element(t_info *info, size_t i, size_t j)
 {
-	info->player_num = 0;
-	info->exit_num = 0;
-	info->item_num = 0;
+	info->player_sum = 0;
+	info->exit_sum = 0;
+	info->item_sum = 0;
 	while (i <= info->row)
 	{
 		j = 0;
@@ -43,7 +43,7 @@ static void	validate_element(t_info *info, size_t i, size_t j)
 		}
 		i++;
 	}
-	if (info->player_num != 1 || info->exit_num != 1 || info->item_num == 0)
+	if (info->player_sum != 1 || info->exit_sum != 1 || info->item_sum == 0)
 		free_map_and_exit(info, info->map, "Error\nInvalid map\n");
 }
 

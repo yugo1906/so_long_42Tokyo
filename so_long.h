@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:45:15 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/04/05 08:29:27 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/05 08:40:42 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ typedef struct s_game_data
 	void	*win;
 	size_t	col;
 	size_t	row;
-	size_t	item_num;
-	size_t	player_num;
-	size_t	exit_num;
+	size_t	item_sum;
+	size_t	player_sum;
+	size_t	exit_sum;
 	char	*image[count_type];
 	size_t	player[2];
 	char	**map;
