@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	t_info	info;
 
 	check_arg(argc, argv);
-	info.map = get_loaded_map(&info, argv[1]);
+	set_loaded_map(&info, argv[1]);
 	validate_map(&info);
 	info.mlx = mlx_init();
 	info.win = mlx_new_window(info.mlx, info.col * 50 + 50, info.row * 50 + 50,

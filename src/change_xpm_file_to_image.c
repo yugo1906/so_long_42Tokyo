@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 09:05:37 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/04/05 08:12:27 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/08 05:24:45 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static void	create_image(t_info *info)
 {
 	create_image_ptr(info, e_player, "./img/player/player.xpm");
 	create_image_ptr(info, e_wall, "./img/wall/wall.xpm");
-	create_image_ptr(info, e_exit, "./img/exit/goal.xpm");
+	create_image_ptr(info, e_exit_close, "./img/exit/goal.xpm");
+	create_image_ptr(info, e_exit_open, "./img/exit/goal.xpm");
 	create_image_ptr(info, e_item, "./img/item/item.xpm");
 	create_image_ptr(info, e_path, "./img/path/blue_path.xpm");
 }

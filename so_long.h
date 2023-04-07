@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:45:15 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/04/05 08:40:42 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/08 05:24:04 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_game_data
 }			t_info;
 
 void		check_arg(int argc, char **argv);
-char		**get_loaded_map(t_info *info, char *file_name);
+void		set_loaded_map(t_info *info, char *file_name);
 void		validate_map(t_info *info);
 void		free_map(t_info *info, char **map);
 void		free_map_and_exit(t_info *info, char **map, char *error_message);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_loaded_map.c                                   :+:      :+:    :+:   */
+/*   set_loaded_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 08:51:00 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/03/31 09:13:16 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/08 05:25:30 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,15 @@ static size_t	get_num_of_lines(t_info *info, char *file_name)
 	return (num_of_lines);
 }
 
-char	**get_loaded_map(t_info *info, char *file_name)
+void	set_loaded_map(t_info *info, char *file_name)
 {
 	size_t	num_of_lines;
-	char	**loaded_map;
 	int		fd;
 	size_t	i;
 
 	num_of_lines = get_num_of_lines(info, file_name);
-	loaded_map = malloc(sizeof(char *) * (num_of_lines + 1));
-	if (loaded_map == NULL)
+	info->map = malloc(sizeof(char *) * (num_of_lines + 1));
+	if (info->map == NULL)
 		ex_handling_malloc_error();
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
@@ -78,11 +77,10 @@ char	**get_loaded_map(t_info *info, char *file_name)
 	i = 0;
 	while (i < num_of_lines)
 	{
-		loaded_map[i] = get_next_line(fd);
-		if (loaded_map[i] == NULL)
-			ex_handling_gnl_error(loaded_map);
+		info->map[i] = get_next_line(fd);
+		if (info->map[i] == NULL)
+			ex_handling_gnl_error(info->map);
 		i++;
 	}
 	close(fd);
-	return (loaded_map);
 }
