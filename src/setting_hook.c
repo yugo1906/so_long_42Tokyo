@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 09:02:26 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/04/08 13:12:42 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/08 13:18:17 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	move_player(t_info *info, size_t x, size_t y)
 	if (info->map[x][y] == ITEM)
 	{
 		info->item_sum--;
-		printf("item_sum = %d\n", info->item_sum);
 		if (info->item_sum == 0)
 			change_exit_to_open(info, x, y);
 	}
@@ -47,9 +46,6 @@ void	move_player(t_info *info, size_t x, size_t y)
 		info->player[e_col] = y;
 		info->map[info->player[e_row]][info->player[e_col]] = PLAYER;
 		info->step_count++;
-		ft_printf("steps : %d\n", info->step_count);
-		printf("x = %d, y = %d\n", x, y);
-		printf("info->map[x][y] = %c\n", info->map[x][y]);
 		display_map(info);
 	}
 }
@@ -61,8 +57,6 @@ int	key_event(int keycode, t_info *info)
 
 	x = info->player[e_row];
 	y = info->player[e_col];
-	printf("x: %d, y: %d\n", x, y);
-	printf("info->map[x][y]: %c\n", info->map[x][y]);
 	if (keycode == KEY_A)
 		move_player(info, x, y - 1);
 	if (keycode == KEY_D)
