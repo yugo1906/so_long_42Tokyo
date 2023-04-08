@@ -6,28 +6,27 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 23:30:32 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/04/05 08:20:50 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/08 13:13:36 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-/*minilibx動作のテスト
+// minilibx動作のテスト
 int	my_key_hook(int key_code, void *data)
 {
-	printf("key_code=%d\n", key_code);
+	// printf("key_code=%d\n", key_code);
 	(void)data;
 	return (1);
 }
 
-int	my_destroy_hook(int key_code, void *data)
+int	my_mlx_close(t_info *info)
 {
-	printf("destroy=%d\n", key_code);
-	(void)data;
-	exit(EXIT_SUCCESS);
-	return (1);
+	// printf("destroy=%d\n", key_code);
+	mlx_destroy_window(info->mlx, info->win);
+	return (0);
 }
-*/
+
 static void	validate_mlx_error(t_info *info)
 {
 	if (info->mlx == NULL || info->win == NULL)
@@ -37,6 +36,7 @@ static void	validate_mlx_error(t_info *info)
 int	main(int argc, char **argv)
 {
 	t_info	info;
+	info.step_count = 0;
 
 	check_arg(argc, argv);
 	set_loaded_map(&info, argv[1]);
@@ -47,10 +47,12 @@ int	main(int argc, char **argv)
 	validate_mlx_error(&info);
 	change_xpm_file_to_image(&info);
 	display_map(&info);
-	// setting_hook(&info);
-	mlx_loop(info.mlx);
+	setting_hook(&info);
 	// close_mlx(&info, loaded_map);
-	return (0);
+	// mlx_key_hook(info.win, my_key_hook, NULL);
+	mlx_hook(info.win, ON_DESTROY, 1, my_mlx_close, &info);
+	mlx_loop(info.mlx);
+	return 0;
 }
 // マップ内容確認コード
 // int		i = 0;

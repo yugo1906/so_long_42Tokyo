@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:45:15 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/04/08 05:24:04 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/08 13:14:00 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 # define PLAYER 'P'
 # define EXIT 'E'
 # define ITEM 'C'
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define ON_DESTROY 17
 
 typedef enum e_flag_row_or_col
 {
@@ -39,7 +45,8 @@ typedef enum e_type
 {
 	e_player,
 	e_wall,
-	e_exit,
+	e_exit_close,
+	e_exit_open,
 	e_item,
 	e_path,
 	count_type,
@@ -57,6 +64,7 @@ typedef struct s_game_data
 	char	*image[count_type];
 	size_t	player[2];
 	char	**map;
+	size_t	step_count;
 }			t_info;
 
 void		check_arg(int argc, char **argv);
@@ -70,4 +78,5 @@ void		free_copy_map(char **cp_map, size_t free_size);
 void		validate_path(t_info *info);
 void		change_xpm_file_to_image(t_info *info);
 void		display_map(t_info *info);
+void		setting_hook(t_info *info);
 #endif

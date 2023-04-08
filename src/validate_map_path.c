@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 08:59:31 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/04/05 08:09:41 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/08 07:22:52 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void	validate_mark(t_info *info, char **cp_map, size_t i)
 		{
 			if (cp_map[i][j] == ITEM && info->map[i][j] == ITEM)
 				is_all_items_collect = false;
-			else if (cp_map[i][j] == 'M' && info->map[i][j] == EXIT)
+			else if (cp_map[i][j] == 'M' && info->map[i][j] == e_exit_close)
 				is_can_goal = true;
 			j++;
 		}

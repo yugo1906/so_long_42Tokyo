@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 07:46:17 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/04/05 09:08:40 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/08 07:21:39 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static void	check_element(t_info *info, size_t i, size_t j)
 		info->player[e_col] = j;
 	}
 	else if (info->map[i][j] == EXIT)
+	{
 		info->exit_sum++;
+		info->map[i][j] = e_exit_close;
+	}
 	else if (info->map[i][j] == ITEM)
 		info->item_sum++;
 }

@@ -12,7 +12,8 @@ SRCS 				= main.c \
 							validate_map_path.c \
 							free_map.c \
 							change_xpm_file_to_image.c \
-							display_map.c
+							display_map.c \
+							setting_hook.c
 SRCS				:= $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJS 				= ${SRCS:%.c=%.o}
 
