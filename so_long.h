@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:45:15 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/04/08 13:14:00 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/08 14:51:08 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define EXIT 'E'
 # define ITEM 'C'
 # define KEY_ESC 65307
+# define KEY_Q 113
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
@@ -49,7 +50,7 @@ typedef enum e_type
 	e_exit_open,
 	e_item,
 	e_path,
-	count_type,
+	e_count_type,
 }			t_type;
 
 typedef struct s_game_data
@@ -61,10 +62,10 @@ typedef struct s_game_data
 	size_t	item_sum;
 	size_t	player_sum;
 	size_t	exit_sum;
-	char	*image[count_type];
+	char	*image[6];
 	size_t	player[2];
 	char	**map;
-	size_t	step_count;
+	int		step_count;
 }			t_info;
 
 void		check_arg(int argc, char **argv);
@@ -75,8 +76,13 @@ void		free_map_and_exit(t_info *info, char **map, char *error_message);
 void		free_two_map_exit(t_info *info, char **map, char **cp_map,
 				char *ex_m);
 void		free_copy_map(char **cp_map, size_t free_size);
+void		free_map_and_exit_no_message(t_info *info, char **map);
 void		validate_path(t_info *info);
 void		change_xpm_file_to_image(t_info *info);
-void		display_map(t_info *info);
+int			display_map(t_info *info);
 void		setting_hook(t_info *info);
+int			key_event(int keycode, t_info *info);
+int			my_mlx_close(int key_code, t_info *info);
+void		validate_mlx_error(t_info *info);
+
 #endif

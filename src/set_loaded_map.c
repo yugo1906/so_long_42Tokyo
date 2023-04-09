@@ -6,7 +6,7 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 08:51:00 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/04/08 05:25:30 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:52:35 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static size_t	get_num_of_lines(t_info *info, char *file_name)
 	char	*tmp;
 
 	num_of_lines = 0;
+	info->row = 0;
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		ex_handling_file_error(file_name);
@@ -56,7 +57,8 @@ static size_t	get_num_of_lines(t_info *info, char *file_name)
 		free(tmp);
 		num_of_lines++;
 	}
-	info->row = num_of_lines - 1;
+	if (num_of_lines > 0)
+		info->row = num_of_lines - 1;
 	close(fd);
 	return (num_of_lines);
 }

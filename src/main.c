@@ -6,38 +6,22 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 23:30:32 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/04/08 13:13:36 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/04/09 15:49:36 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-// minilibx動作のテスト
-int	my_key_hook(int key_code, void *data)
+__attribute__((destructor)) static void destructor()
 {
-	// printf("key_code=%d\n", key_code);
-	(void)data;
-	return (1);
-}
-
-int	my_mlx_close(t_info *info)
-{
-	// printf("destroy=%d\n", key_code);
-	mlx_destroy_window(info->mlx, info->win);
-	return (0);
-}
-
-static void	validate_mlx_error(t_info *info)
-{
-	if (info->mlx == NULL || info->win == NULL)
-		free_map_and_exit(info, info->map, "Error\nMlx NULL");
+	system("leaks -q so_long");
 }
 
 int	main(int argc, char **argv)
 {
 	t_info	info;
-	info.step_count = 0;
 
+	info.step_count = 0;
 	check_arg(argc, argv);
 	set_loaded_map(&info, argv[1]);
 	validate_map(&info);
@@ -48,41 +32,8 @@ int	main(int argc, char **argv)
 	change_xpm_file_to_image(&info);
 	display_map(&info);
 	setting_hook(&info);
-	// close_mlx(&info, loaded_map);
-	// mlx_key_hook(info.win, my_key_hook, NULL);
 	mlx_hook(info.win, ON_DESTROY, 1, my_mlx_close, &info);
+	mlx_loop_hook(info.mlx, display_map, &info);
 	mlx_loop(info.mlx);
-	return 0;
+	return (0);
 }
-// マップ内容確認コード
-// int		i = 0;
-// printf("info->row = %d\n", info.row);
-// printf("info->col = %d\n", info.col);
-// while (i <= info.row)
-// {
-// 	ft_putstr_fd(loaded_map[i], 1);
-// 	i++;
-// }
-/* minilibx動作テスト
-	// int		width;
-	// int		height;
-	// void	*mlx;
-	// void	*win;
-	mlx = mlx_init();
-	if (!mlx)
-		exit(EXIT_FAILURE);
-	mlx_get_screen_size(mlx, &width, &height);
-	printf("width = %d\n", width);
-	printf("height = %d\n", height);
-	win = mlx_new_window(mlx, width / 3, height / 3, "so_longlong!!");
-	mlx_hook(win, 17, 1, my_destroy_hook, NULL);
-	// mlx_hook(win, 65307, 1, my_destroy_hook, NULL);
-	mlx_key_hook(win, my_key_hook, NULL);
-	mlx_loop(mlx);
-	if (!win)
-	{
-		free(mlx);
-		exit(EXIT_FAILURE);
-	}
-	free(mlx);
-*/

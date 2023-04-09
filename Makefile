@@ -1,6 +1,5 @@
 NAME				=	so_long
-# CFLAGS			=	-Wall -Wextra -Werror
-CFLAGS			=	-g -fsanitize=address
+CFLAGS			=	-Wall -Wextra -Werror
 LIBFT_DIR		=	./include_libft
 PRINTF_DIR	=	./include_printf
 GNL_DIR			=	./include_gnl
@@ -13,7 +12,8 @@ SRCS 				= main.c \
 							free_map.c \
 							change_xpm_file_to_image.c \
 							display_map.c \
-							setting_hook.c
+							setting_hook.c \
+							program_end.c
 SRCS				:= $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJS 				= ${SRCS:%.c=%.o}
 
@@ -37,7 +37,7 @@ clean :
 		make clean -C $(LIBFT_DIR)
 		make clean -C $(PRINTF_DIR)
 		make clean -C $(GNL_DIR)
-	rm -f $(OBJS)
+		rm -f $(OBJS)
 
 fclean : clean
 	make fclean -C $(LIBFT_DIR)
