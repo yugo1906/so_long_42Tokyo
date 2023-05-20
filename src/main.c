@@ -6,16 +6,11 @@
 /*   By: yughoshi <yughoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 23:30:32 by yughoshi          #+#    #+#             */
-/*   Updated: 2023/04/09 15:49:36 by yughoshi         ###   ########.fr       */
+/*   Updated: 2023/05/20 16:03:27 by yughoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-__attribute__((destructor)) static void destructor()
-{
-	system("leaks -q so_long");
-}
 
 int	main(int argc, char **argv)
 {
