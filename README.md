@@ -4,8 +4,7 @@
   - 「MiniLibX」というUnixプラットフォーム用の「X Window System」を抽象化したものを活用してプログラミングする
 
 ## デモ動画
-
-https://github.com/yugo1906/so_long_42Tokyo/assets/89300571/49d98e27-e2ce-4942-8db2-0c8c1f7e21f7
+https://github.com/yugo1906/so_long_42Tokyo/assets/89300571/786e37a9-b2ea-4963-b8f2-5329f015d657
 
 ■動作実行時のコマンドライン引数についての説明
 - 第一引数：拡張子が「ber」のマップ情報が記載されたファイル
